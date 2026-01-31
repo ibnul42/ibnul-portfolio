@@ -18,7 +18,7 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={clsx("sticky top-0 z-50", {
+      className={clsx("z-10", {
         "backdrop-blur border-b border-neutral-200 dark:border-neutral-800":
           !isHome,
       })}
@@ -26,7 +26,7 @@ export const Navbar = () => {
       <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="text-lg font-semibold">
-          <Image src='/assets/logo.png' width={30} height={30} alt="logo" />
+          <Image src="/assets/logo.png" width={35} height={35} alt="logo" />
         </Link>
 
         <div className="flex items-center gap-6">
@@ -37,7 +37,7 @@ export const Navbar = () => {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors"
+                    className="text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white text-lg transition-colors"
                   >
                     {item.label}
                   </Link>
@@ -51,14 +51,19 @@ export const Navbar = () => {
             onClick={toggleTheme}
             aria-label="Toggle theme"
             className={clsx(
-              "rounded-full p-2 transition-colors",
-              "hover:bg-neutral-200 dark:hover:bg-neutral-800",
+              "relative rounded-full p-2 flex items-center justify-center cursor-pointer",
+              "transition-all duration-200",
+              // glass effect
+              "bg-white/60 hover:bg-white dark:bg-neutral-900/60 dark:hover:bg-white/20",
+              "backdrop-blur-md",
+              // border for contrast
+              "border border-neutral-500/50 dark:border-neutral-300/50",
             )}
           >
             {theme === "dark" ? (
-              <Sun className="h-5 w-5" />
+              <Sun className="h-5 w-5 text-white dark:text-neutral-100" />
             ) : (
-              <Moon className="h-5 w-5" />
+              <Moon className="h-5 w-5 text-black/50 dark:text-neutral-100" />
             )}
           </button>
         </div>
